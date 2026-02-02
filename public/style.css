@@ -1,0 +1,390 @@
+:root {
+  --bg: #fff;
+  --bg-chat: #fafafa;
+  --border: #dbdbdb;
+  --bubble-them: #efefef;
+  --bubble-you: #3797f0;
+  --bubble-you-text: #fff;
+  --text: #262626;
+  --text-secondary: #8e8e8e;
+  --header-bg: #fff;
+  --input-bg: #fff;
+  --shadow: 0 1px 2px rgba(0,0,0,0.08);
+  --radius: 22px;
+  --radius-sm: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-chat);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* Instagram DM header */
+.dm-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  min-height: 56px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header-back {
+  background: none;
+  border: none;
+  padding: 8px;
+  margin: -8px 0 -8px -8px;
+  cursor: pointer;
+  color: var(--text);
+  border-radius: 50%;
+}
+
+.header-back:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.header-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.header-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.header-status {
+  font-size: 12px;
+  color: #00c853;
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--text);
+  border-radius: 50%;
+}
+
+.icon-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Chat area */
+.chat-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-chat);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Welcome = first message from them */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.welcome-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+
+.welcome-avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.time-stamp {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: 36px;
+  margin-bottom: 12px;
+}
+
+/* Message rows - Instagram style */
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  margin-bottom: 2px;
+  animation: fadeIn 0.2s ease;
+}
+
+.message.them {
+  align-items: flex-start;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+
+.message.you .message-row {
+  flex-direction: row-reverse;
+  margin-left: auto;
+}
+
+.message.them .message-row .message-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.message.you .message-row .message-avatar {
+  display: none;
+}
+
+/* Bubbles */
+.message-bubble {
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 280px;
+  line-height: 1.35;
+}
+
+/* Them: grey bubble, left */
+.bubble-them {
+  background: var(--bubble-them);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+
+/* You: blue bubble, right */
+.bubble-you {
+  background: var(--bubble-you);
+  color: var(--bubble-you-text);
+  border-bottom-right-radius: 4px;
+}
+
+.message .time-stamp {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin: 0 4px 8px 0;
+}
+
+.message.them .time-stamp {
+  margin-left: 36px;
+  margin-right: 0;
+}
+
+/* Typing indicator - like Instagram */
+.typing-indicator {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.typing-indicator .message-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.typing-bubble {
+  background: var(--bubble-them);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  border-bottom-left-radius: 4px;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+/* Input bar - Instagram style */
+.chat-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px 12px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.chat-form input {
+  flex: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 16px 10px 18px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.chat-form input::placeholder {
+  color: var(--text-secondary);
+}
+
+.chat-form input:focus {
+  border-color: var(--text-secondary);
+}
+
+.send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bubble-you);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.send-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.send-btn svg {
+  margin-left: 2px;
+}
+
+/* Error toast */
+.error-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #262626;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 22px;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: transform 0.25s, opacity 0.25s;
+  max-width: 90%;
+  text-align: center;
+  z-index: 100;
+}
+
+.error-toast.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Safe area for notched phones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .chat-form {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+  .dm-header {
+    padding-top: calc(12px + env(safe-area-inset-top));
+  }
+}

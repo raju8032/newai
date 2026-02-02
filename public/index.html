@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Always Here</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js"></script>
+</head>
+<body>
+  <div class="app">
+    <!-- Instagram-style top bar -->
+    <header class="dm-header">
+      <button type="button" class="header-back" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="header-avatar">💕</div>
+      <div class="header-info">
+        <span class="header-name">Always Here</span>
+        <span class="header-status">Active now</span>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" aria-label="Video call"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></button>
+        <button type="button" class="icon-btn" aria-label="Info"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></button>
+      </div>
+    </header>
+
+    <main class="chat-container">
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome" id="welcome">
+          <div class="welcome-row">
+            <div class="header-avatar welcome-avatar">💕</div>
+            <div class="message-bubble bubble-them">
+              Hey, I'm here. You can tell me anything—how your day went, what's on your mind, or just vent. No judgment, just support. 💕
+            </div>
+          </div>
+          <span class="time-stamp">Now</span>
+        </div>
+      </div>
+
+      <form class="chat-form" id="chatForm">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Message..."
+          autocomplete="off"
+          maxlength="2000"
+        />
+        <button type="submit" id="sendBtn" class="send-btn" aria-label="Send">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </form>
+    </main>
+
+    <div class="error-toast" id="errorToast"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
